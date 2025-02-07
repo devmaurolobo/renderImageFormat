@@ -6,6 +6,7 @@ import { ImageOption } from './ImageOption';
 import { Button } from './Button';
 import { CreateButton } from './CreateButton';
 import { TestButton } from './TestButton';
+import Image from 'next/image';
 
 interface SharedSettingsPanelProps {
   previews: Preview[];
@@ -191,7 +192,7 @@ export const SharedSettingsPanel: React.FC<SharedSettingsPanelProps> = ({ previe
       <Group>
         <GroupTitle>Ações</GroupTitle>
         <ButtonsContainer>
-          <CreateButton previews={previews}>
+          <CreateButton preview={previews[0]}>
             Criar Mídias
           </CreateButton>
           <TestButton />

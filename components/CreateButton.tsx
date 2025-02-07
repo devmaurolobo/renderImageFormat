@@ -5,9 +5,10 @@ import { Button } from './Button';
 
 interface CreateButtonProps {
   preview: Preview;
+  children?: React.ReactNode;
 }
 
-export const CreateButton: React.FC<CreateButtonProps> = (props) => {
+export const CreateButton: React.FC<CreateButtonProps> = ({ preview, children }) => {
   const [isRendering, setIsRendering] = useState(false);
   const [render, setRender] = useState<any>();
 
@@ -36,7 +37,7 @@ export const CreateButton: React.FC<CreateButtonProps> = (props) => {
         setIsRendering(true);
 
         try {
-          const render = await finishVideo(props.preview);
+          const render = await finishVideo(preview);
           if (render.status === 'succeeded') {
             setRender(render);
           } else {
@@ -49,7 +50,7 @@ export const CreateButton: React.FC<CreateButtonProps> = (props) => {
         }
       }}
     >
-      Create Video
+      {children || 'Create Video'}
     </Component>
   );
 };
