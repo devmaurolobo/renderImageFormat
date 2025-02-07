@@ -61,7 +61,7 @@ const Component = styled(Button)`
 
 const finishVideo = async (preview: Preview) => {
   const source = preview.getSource();
-  const modifications = preview.state?.modifications || {};
+  const modifications = (preview.state as any)?.modifications || {};
 
   const response = await fetch('/api/videos', {
     method: 'POST',
